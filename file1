@@ -109,3 +109,36 @@ int main() {
 
     return 0;
 }
+
+
+#include <stdio.h>
+
+int main() {
+    char clr;
+
+    printf("\nEnter the color of the traffic light (R/O/G): ");
+    clr = getchar(); // Changed to getchar() to read a character from stdin
+
+    switch(clr) {
+        case 'R':
+        case 'r':
+            printf("\nStop the vehicle until green light glows");
+            break;
+
+        case 'O':
+        case 'o':
+            printf("\nStart the vehicle and proceed");
+            break;
+
+        case 'G':
+        case 'g':
+            printf("\nDrive.......");
+            break;
+
+        default:
+            printf("\nTraffic lights are off. Move slowly considering the flow.");
+            break;
+    }
+
+    return 0;
+}
