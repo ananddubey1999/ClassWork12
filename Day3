@@ -46,4 +46,33 @@ loop_end:
     return 0;
 }
 
+// while loop on real life example " Timmer "
+#include <stdio.h>
+#include <unistd.h> // for sleep()
+
+int main() {
+    int hours, minutes, seconds;
+
+    printf("Enter the duration of the timer:\n");
+    printf("Hours: ");
+    scanf("%d", &hours);
+    printf("Minutes: ");
+    scanf("%d", &minutes);
+    printf("Seconds: ");
+    scanf("%d", &seconds);
+
+    int total_seconds = hours * 3600 + minutes * 60 + seconds;
+
+    printf("Timer started!\n");
+
+    while (total_seconds > 0) {
+        printf("Time remaining: %02d:%02d:%02d\n", total_seconds / 3600, (total_seconds % 3600) / 60, total_seconds % 60);
+        sleep(1);
+        total_seconds--;
+    }
+
+    printf("Time's up!\n");
+
+    return 0;
+}
 
