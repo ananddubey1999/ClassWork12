@@ -76,3 +76,20 @@ int main() {
     return 0;
 }
 
+
+
+#include <stdio.h>
+
+int main() {
+    int it = 11; // Initialize it to a value greater than 10
+
+    do {
+        it++; // Increment it before entering the loop
+    } while (it <= 10); // Check the condition after the increment
+
+    printf("\nit = %d", it); // Print the value of it after exiting the loop
+
+    printf("\n\nDone!\n\n");
+
+    return 0;
+}
