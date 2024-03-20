@@ -138,6 +138,8 @@ int main() {
 assignment Question: 4
 
 
+
+
 #include <stdio.h>
 
 void printPartitions(int a, int b, int c, int d) {
@@ -160,3 +162,21 @@ int countWays(int n) {
         }
     }
 
+    return ways;
+}
+
+int main() {
+    int T;
+    printf("Enter the number of test cases: ");
+    scanf("%d", &T);
+
+    while (T--) {
+        int n;
+        printf("Enter a positive integer: ");
+        scanf("%d", &n);
+
+        printf("Number of ways to divide %d into 4 parts: %d\n", n, countWays(n));
+    }
+
+    return 0;
+}
