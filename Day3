@@ -112,3 +112,48 @@ int main() {
 
     return 0;
 }
+
+
+
+/// sharddha code here
+
+#include <stdio.h>
+
+void doublenumber(int *num1, int *num2) {
+    *num1 *= 2; // Double the value of num1
+    *num2 *= 2; // Double the value of num2
+    printf("Modified values inside the function: %d %d\n", *num1, *num2);
+}
+
+int main() {
+    int num1, num2;
+
+    printf("Enter two integers: ");
+    scanf("%d %d", &num1, &num2);
+
+    doublenumber(&num1, &num2);
+
+    printf("Original values in main function: %d %d\n", num1, num2);
+
+    return 0;
+}
+
+#include <stdio.h>
+
+void squareNumber(int *num) {
+    *num *= *num; // Square the value of num
+    printf("Modified value inside the function: %d\n", *num);
+}
+
+int main() {
+    int num;
+
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    squareNumber(&num);
+
+    printf("Modified value in main function: %d\n", num);
+
+    return 0;
+}
