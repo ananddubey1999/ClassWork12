@@ -1,36 +1,77 @@
 #include <stdio.h>
 
-void findSubarray(int arr[], int size, int targetSum) {
+int findEquilibrium(int arr[], int size) {
+    int totalSum = 0, leftSum = 0;
+
+    // Calculate total sum of the array
     for (int i = 0; i < size; i++) {
-        int currentSum = 0;
-        for (int j = i; j < size; j++) {
-            currentSum += arr[j];
-            if (currentSum == targetSum) {
-                printf("Sum found between indexes %d and %d\n", i, j);
-                return;
-            }
-        }
+        totalSum += arr[i];
     }
-    printf("No subarray found with the given sum\n");
+
+    // Check for equilibrium position
+    for (int i = 0; i < size; i++) {
+        totalSum -= arr[i];  // Reduce total sum by current element
+        if (leftSum == totalSum) {
+            return i;  // Equilibrium position found
+        }
+        leftSum += arr[i];  // Add current element to left sum
+    }
+
+    return -1;  // Equilibrium position not found
 }
 
 int main() {
-    int size, targetSum;
-
+    int size;
     printf("Enter the size of the array: ");
     scanf("%d", &size);
 
     int arr[size];
-
     printf("Enter the elements of the array: ");
     for (int i = 0; i < size; i++) {
         scanf("%d", &arr[i]);
     }
 
-    printf("Enter the sum to find: ");
-    scanf("%d", &targetSum);
+    int equilibriumIndex = findEquilibrium(arr, size);
 
-    findSubarray(arr, size, targetSum);
+    if (equilibriumIndex != -1) {
+        printf("Equilibrium position found at index %d\n", equilibriumIndex);
+    } else {
+        printf("No equilibrium position found\n");
+    }
+
+    return 0;
+}
+
+
+#include <stdio.h>
+
+void findLeaders(int arr[], int size) {
+    int maxRight = arr[size - 1];  // Rightmost element is always a leader
+    printf("%d ", maxRight);
+
+    // Traverse the array from right to left to find leaders
+    for (int i = size - 2; i >= 0; i--) {
+        if (arr[i] > maxRight) {
+            printf("%d ", arr[i]);
+            maxRight = arr[i];
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter the elements of the array: ");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Leaders in the array: ");
+    findLeaders(arr, size);
 
     return 0;
 }
