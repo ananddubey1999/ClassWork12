@@ -1,77 +1,35 @@
 #include <stdio.h>
 
-int findEquilibrium(int arr[], int size) {
-    int totalSum = 0, leftSum = 0;
-
-    // Calculate total sum of the array
-    for (int i = 0; i < size; i++) {
-        totalSum += arr[i];
-    }
-
-    // Check for equilibrium position
-    for (int i = 0; i < size; i++) {
-        totalSum -= arr[i];  // Reduce total sum by current element
-        if (leftSum == totalSum) {
-            return i;  // Equilibrium position found
-        }
-        leftSum += arr[i];  // Add current element to left sum
-    }
-
-    return -1;  // Equilibrium position not found
-}
+// Function declaration
+int addition(int, int);
+int mul(int, int);
 
 int main() {
-    int size;
-    printf("Enter the size of the array: ");
-    scanf("%d", &size);
+    int v1, v2, result_addition, result_mul;
 
-    int arr[size];
-    printf("Enter the elements of the array: ");
-    for (int i = 0; i < size; i++) {
-        scanf("%d", &arr[i]);
-    }
+    // Getting user input
+    printf("\nEnter the two values: ");
+    scanf("%d%d", &v1, &v2);
 
-    int equilibriumIndex = findEquilibrium(arr, size);
+    // Calling addition function
+    result_addition = addition(v1, v2);
 
-    if (equilibriumIndex != -1) {
-        printf("Equilibrium position found at index %d\n", equilibriumIndex);
-    } else {
-        printf("No equilibrium position found\n");
-    }
+    // Calling mul function
+    result_mul = mul(v1, v2);
+
+    // Printing results
+    printf("\nAddition of %d and %d is %d\n", v1, v2, result_addition);
+    printf("Multiplication of %d and %d is %d\n\n", v1, v2, result_mul);
 
     return 0;
 }
 
-
-#include <stdio.h>
-
-void findLeaders(int arr[], int size) {
-    int maxRight = arr[size - 1];  // Rightmost element is always a leader
-    printf("%d ", maxRight);
-
-    // Traverse the array from right to left to find leaders
-    for (int i = size - 2; i >= 0; i--) {
-        if (arr[i] > maxRight) {
-            printf("%d ", arr[i]);
-            maxRight = arr[i];
-        }
-    }
-    printf("\n");
+// Function definition for addition
+int addition(int a, int b) {
+    return a + b;
 }
 
-int main() {
-    int size;
-    printf("Enter the size of the array: ");
-    scanf("%d", &size);
-
-    int arr[size];
-    printf("Enter the elements of the array: ");
-    for (int i = 0; i < size; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    printf("Leaders in the array: ");
-    findLeaders(arr, size);
-
-    return 0;
+// Function definition for multiplication
+int mul(int a, int b) {
+    return a * b;
 }
